@@ -1,0 +1,34 @@
+name: Slack Utils
+version: 1
+rundeckPluginVersion: 1.2
+author: Justyn Roberts
+date: 2022-03
+url: http://rundeck.org/
+tags:
+  - slack
+  - script
+providers:
+  - name: slack-create-channel
+    service: WorkflowNodeStep
+    title: Create Slack Channel
+    description: 'Create a Slack Channel'
+    plugin-type: script
+    script-interpreter: python -u
+    script-file: channel-create.py
+    script-args:
+    config:
+      - name: api_version
+        type: String
+        title: "API Version"
+        description: "Kubernetes API Version"
+        required: true
+        default: "extensions/v1beta1"
+        renderingOptions:
+          groupName: Metadata
+      - name: channel_name
+        type: String
+        title: "Channel Name"
+        description: "Channel Name"
+        required: true
+        renderingOptions:
+          groupName: Metadata
